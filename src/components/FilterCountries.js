@@ -84,7 +84,11 @@ const Wrapper = styled.section`
     position: relative;
 
     &__select {
-      /* height: 47px; */
+      appearance: none;
+      cursor: pointer;
+      border: none;
+      height: 49px;
+      min-width: 170px;
       background: ${({ theme }) => theme.elements};
       color: ${({ theme }) => theme.text};
       border-radius: 0.2rem;
@@ -95,12 +99,6 @@ const Wrapper = styled.section`
         2.6px 2.6px 17.9px rgba(0, 0, 0, 0.032),
         5.2px 5.2px 32.8px rgba(0, 0, 0, 0.042),
         14px 14px 77px rgba(0, 0, 0, 0.07);
-
-      /* custom select */
-      appearance: none;
-      cursor: pointer;
-      background: ${({ theme }) => theme.elements};
-      border: none;
     }
 
     &__icon {
