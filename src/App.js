@@ -21,6 +21,7 @@ function App() {
     setSearchQuery,
     filterCountries,
     setFilterCountries,
+    theme,
   }
 
   const searchCountries = () => {

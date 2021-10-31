@@ -1,12 +1,14 @@
 import React from "react"
 import styled from "styled-components"
 import { AiOutlineSearch } from "react-icons/ai"
+import { AiOutlineCaretDown } from "react-icons/ai"
 
 function FilterCountries({
   setSearchQuery,
   searchQuery,
   filterCountries,
   setFilterCountries,
+  theme,
 }) {
   return (
     <div className="container">
@@ -22,6 +24,7 @@ function FilterCountries({
           />
         </div>
         <div className="filter">
+          <AiOutlineCaretDown className="filter__icon" />
           <select
             id="filterCountries"
             className="filter__select"
@@ -54,6 +57,8 @@ const Wrapper = styled.section`
     position: relative;
 
     &__input {
+      background: ${({ theme }) => theme.elements};
+      color: ${({ theme }) => theme.text};
       padding: 1rem 1rem 1rem 3rem;
       border-radius: 0.2rem;
       border: none;
@@ -76,8 +81,12 @@ const Wrapper = styled.section`
   }
 
   .filter {
+    position: relative;
+
     &__select {
       /* height: 47px; */
+      background: ${({ theme }) => theme.elements};
+      color: ${({ theme }) => theme.text};
       border-radius: 0.2rem;
       padding: 1rem 2rem 1rem 1rem;
       box-shadow: 0.3px 0.3px 2.2px rgba(0, 0, 0, 0.017),
@@ -87,12 +96,25 @@ const Wrapper = styled.section`
         5.2px 5.2px 32.8px rgba(0, 0, 0, 0.042),
         14px 14px 77px rgba(0, 0, 0, 0.07);
 
-      // A reset of styles, including removing the default dropdown arrow
+      /* custom select */
       appearance: none;
-      // Additional resets for further consistency
       cursor: pointer;
-      background-color: transparent;
+      background: ${({ theme }) => theme.elements};
       border: none;
+    }
+
+    &__icon {
+      position: absolute;
+      right: 0.9rem;
+      top: 1rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+
+    .filter {
+      margin-top: 1rem;
     }
   }
 `

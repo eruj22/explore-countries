@@ -7,7 +7,9 @@ const Toggle = ({ theme, toggleTheme }) => {
   const lightTheme = theme === "light"
   return (
     <Wrapper className="button" onClick={toggleTheme}>
-      <FaMoon className={lightTheme ? "icon" : "icon icon--show"} />
+      <FaMoon
+        className={lightTheme ? "icon" : "icon icon--show icon--whiteColor"}
+      />
       <FaRegMoon className={lightTheme ? "icon icon--show" : "icon"} />
       <span className="span">Dark mode</span>
     </Wrapper>
@@ -27,10 +29,14 @@ const Wrapper = styled.button`
   .icon {
     display: none;
     margin-right: 0.3rem;
-  }
 
-  .icon--show {
-    display: inline-block;
+    &--whiteColor {
+      color: white;
+    }
+
+    &--show {
+      display: inline-block;
+    }
   }
 `
 

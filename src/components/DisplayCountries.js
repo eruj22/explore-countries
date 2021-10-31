@@ -40,12 +40,11 @@ function DisplayCountries({ countries }) {
 const Wrapper = styled.section`
   margin-top: 3rem;
   display: grid;
-  grid-template-columns: repeat(4, 300px);
-  gap: 2rem;
+  grid-template-columns: repeat(4, minmax(200px, 1fr));
+  gap: 4rem;
 
   .card {
     cursor: pointer;
-    width: 300px;
     min-height: 300px;
     border-radius: 0.3rem;
     padding-bottom: 2rem;
@@ -58,7 +57,7 @@ const Wrapper = styled.section`
 
     &__image {
       width: 100%;
-      max-height: 150px;
+      height: 150px;
       object-fit: cover;
       object-position: center;
     }
@@ -70,6 +69,20 @@ const Wrapper = styled.section`
 
   .text--bold {
     font-weight: bold;
+  }
+
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(3, minmax(200px, 1fr));
+    gap: 3rem;
+  }
+
+  @media (max-width: 850px) {
+    grid-template-columns: repeat(2, minmax(200px, 1fr));
+  }
+
+  @media (max-width: 600px) {
+    grid-template-columns: 300px;
+    justify-content: center;
   }
 `
 

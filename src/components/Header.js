@@ -40,6 +40,12 @@ const Wrapper = styled.header`
       }
     }
   }
+
+  @media (max-width: 600px) {
+    .header {
+      flex-direction: column;
+    }
+  }
 `
 
 export default Header
