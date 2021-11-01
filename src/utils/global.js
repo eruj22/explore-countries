@@ -30,4 +30,8 @@ export const GlobalStyles = createGlobalStyle`
     transition: all 0.25s linear;
   }
 
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 `

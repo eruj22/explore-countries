@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import { Link } from "react-router-dom"
 
 function DisplayCountries({ countries }) {
   return (
@@ -9,26 +10,28 @@ function DisplayCountries({ countries }) {
           const { name, flag, population, region, capital } = country
           return (
             <article className="card" key={name}>
-              <img
-                src={flag}
-                className="card__image"
-                alt={`the flag of ${name}`}
-              />
-              <div className="card__info">
-                <h3 className="card__title">{name}</h3>
-                <p className="card__paragraph">
-                  <span className="text--bold">Population: </span>
-                  {population.toLocaleString()}
-                </p>
-                <p className="card__paragraph">
-                  <span className="text--bold">Region: </span>
-                  {region}
-                </p>
-                <p className="card__paragraph">
-                  <span className="text--bold">Capital: </span>
-                  {capital}
-                </p>
-              </div>
+              <Link to={`country/${name}`}>
+                <img
+                  src={flag}
+                  className="card__image"
+                  alt={`the flag of ${name}`}
+                />
+                <div className="card__info">
+                  <h3 className="card__title">{name}</h3>
+                  <p className="card__paragraph">
+                    <span className="text--bold">Population: </span>
+                    {population ? population.toLocaleString() : "/"}
+                  </p>
+                  <p className="card__paragraph">
+                    <span className="text--bold">Region: </span>
+                    {region ? region : "/"}
+                  </p>
+                  <p className="card__paragraph">
+                    <span className="text--bold">Capital: </span>
+                    {capital ? capital : "/"}
+                  </p>
+                </div>
+              </Link>
             </article>
           )
         })}
@@ -42,6 +45,7 @@ const Wrapper = styled.section`
   display: grid;
   grid-template-columns: repeat(4, minmax(200px, 1fr));
   gap: 4rem;
+  padding-bottom: 3rem;
 
   .card {
     cursor: pointer;
