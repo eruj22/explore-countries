@@ -9,6 +9,9 @@ import { useDarkMode } from "./hooks/useDarkMode"
 import FilterCountries from "./components/FilterCountries"
 import DisplayCountries from "./components/DisplayCountries"
 import GoTopButton from "./components/GoTopButton"
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+import DisplaySingleCountry from "./components/DisplaySingleCountry"
+import Footer from "./components/Footer"
 
 function App() {
   const [theme, toggleTheme] = useDarkMode()
@@ -21,7 +24,7 @@ function App() {
   const [showGoTop, setShowGoTop] = useState(false)
   const [searchQuery, setSearchQuery] = useState("")
   const [filterCountries, setFilterCountries] = useState("")
-  let filter = {
+  const filter = {
     searchQuery,
     setSearchQuery,
     filterCountries,
@@ -37,7 +40,7 @@ function App() {
     const position = window.scrollY
 
     if (position > 100) {
-      return setShowGoTop(true)
+      setShowGoTop(true)
     } else {
       setShowGoTop(false)
     }
@@ -74,20 +77,30 @@ function App() {
   }
 
   return (
-    <ThemeProvider theme={themeMode}>
-      <>
-        <div ref={refScrollUp}></div>
-        <GlobalStyles />
-        <Header theme={theme} toggleTheme={toggleTheme} />
-        <FilterCountries {...filter} />
-        <DisplayCountries countries={countries} />
-        <GoTopButton
-          theme={theme}
-          showGoTop={showGoTop}
-          handleScrollUp={handleScrollUp}
-        />
-      </>
-    </ThemeProvider>
+    <Router>
+      <ThemeProvider theme={themeMode}>
+        <>
+          <GlobalStyles />
+          <Header theme={theme} toggleTheme={toggleTheme} />
+          <Switch>
+            <Route exact path="/">
+              <div ref={refScrollUp}></div>
+              <FilterCountries {...filter} />
+              <DisplayCountries countries={countries} />
+              <GoTopButton
+                theme={theme}
+                showGoTop={showGoTop}
+                handleScrollUp={handleScrollUp}
+              />
+            </Route>
+            <Route exact path="/country/:name">
+              <DisplaySingleCountry data={data} theme={theme} />
+            </Route>
+          </Switch>
+          <Footer />
+        </>
+      </ThemeProvider>
+    </Router>
   )
 }
 

@@ -1,13 +1,16 @@
 import React from "react"
 import Toggle from "./Toggle"
 import styled from "styled-components"
+import { Link } from "react-router-dom"
 
 function Header({ toggleTheme, theme }) {
   return (
     <Wrapper>
       <div className="container">
         <header className="header">
-          <h1 className="header__title">Where in the world?</h1>
+          <Link to="/">
+            <h1 className="header__title">Where in the world?</h1>
+          </Link>
           <div className="header__toggle">
             <Toggle theme={theme} toggleTheme={toggleTheme} />
           </div>
