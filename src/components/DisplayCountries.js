@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { Link } from "react-router-dom"
+import image from "../assets/error-image.jpg"
 
 function DisplayCountries({ countries }) {
   return (
@@ -12,7 +13,7 @@ function DisplayCountries({ countries }) {
             <article className="card" key={name}>
               <Link to={`country/${name}`}>
                 <img
-                  src={flag}
+                  src={flag ? flag : image}
                   className="card__image"
                   alt={`the flag of ${name}`}
                 />

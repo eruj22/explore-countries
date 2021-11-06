@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom"
 import styled from "styled-components"
 import { CgArrowLongLeft } from "react-icons/cg"
 import { useHistory } from "react-router-dom"
+import image from "../assets/error-image.jpg"
 
 function DisplaySingleCountry({ data, theme }) {
   const { name } = useParams()
@@ -35,7 +36,7 @@ function DisplaySingleCountry({ data, theme }) {
           Back
         </button>
         <div className="info">
-          <img src={flag} className="info__image" alt={name} />
+          <img src={flag ? flag : image} className="info__image" alt={name} />
           <div className="info__text">
             <h2 className="info__title">{name}</h2>
             <div className="info__textGrid">

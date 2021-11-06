@@ -12,6 +12,7 @@ import GoTopButton from "./components/GoTopButton"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import DisplaySingleCountry from "./components/DisplaySingleCountry"
 import Footer from "./components/Footer"
+import Page404 from "./components/Page404"
 
 function App() {
   const [theme, toggleTheme] = useDarkMode()
@@ -95,6 +96,9 @@ function App() {
             </Route>
             <Route exact path="/country/:name">
               <DisplaySingleCountry data={data} theme={theme} />
+            </Route>
+            <Route path="/">
+              <Page404 theme={theme} />
             </Route>
           </Switch>
           <Footer />
