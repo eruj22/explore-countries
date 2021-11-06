@@ -1,18 +1,19 @@
-import React from "react"
-import styled from "styled-components"
-import { Link } from "react-router-dom"
+import React from "react";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+import image from "../assets/error-image.jpg";
 
 function DisplayCountries({ countries }) {
   return (
     <div className="container">
       <Wrapper>
         {countries.map((country) => {
-          const { name, flag, population, region, capital } = country
+          const { name, flag, population, region, capital } = country;
           return (
             <article className="card" key={name}>
               <Link to={`country/${name}`}>
                 <img
-                  src={flag}
+                  src={flag ? flag : image}
                   className="card__image"
                   alt={`the flag of ${name}`}
                 />
@@ -33,11 +34,11 @@ function DisplayCountries({ countries }) {
                 </div>
               </Link>
             </article>
-          )
+          );
         })}
       </Wrapper>
     </div>
-  )
+  );
 }
 
 const Wrapper = styled.section`
@@ -88,6 +89,6 @@ const Wrapper = styled.section`
     grid-template-columns: 300px;
     justify-content: center;
   }
-`
+`;
 
-export default DisplayCountries
+export default DisplayCountries;
