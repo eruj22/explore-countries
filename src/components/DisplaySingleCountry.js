@@ -1,14 +1,14 @@
-import React from "react"
-import { useParams, Link } from "react-router-dom"
-import styled from "styled-components"
-import { CgArrowLongLeft } from "react-icons/cg"
-import { useHistory } from "react-router-dom"
-import image from "../assets/error-image.jpg"
+import React from "react";
+import { useParams, Link } from "react-router-dom";
+import styled from "styled-components";
+import { CgArrowLongLeft } from "react-icons/cg";
+import { useHistory } from "react-router-dom";
+import image from "../assets/error-image.jpg";
 
 function DisplaySingleCountry({ data, theme }) {
-  const { name } = useParams()
-  let history = useHistory()
-  const country = data.filter((item) => item.name === name)
+  const { name } = useParams();
+  let history = useHistory();
+  const country = data.filter((item) => item.name === name);
   const {
     flag,
     region,
@@ -21,12 +21,12 @@ function DisplaySingleCountry({ data, theme }) {
     topLevelDomain,
     currencies,
     timezones,
-  } = country[0]
+  } = country[0];
 
   const findCountryFromCode = (code) => {
-    const country = data.filter((item) => item.alpha3Code === code)
-    return country[0].name
-  }
+    const country = data.filter((item) => item.alpha3Code === code);
+    return country[0].name;
+  };
 
   return (
     <div className="container">
@@ -65,9 +65,9 @@ function DisplaySingleCountry({ data, theme }) {
                 {languages
                   ? languages.map((language, index) => {
                       if (index === 0) {
-                        return language.name
+                        return language.name;
                       } else {
-                        return ", " + language.name
+                        return ", " + language.name;
                       }
                     })
                   : "/"}
@@ -81,9 +81,9 @@ function DisplaySingleCountry({ data, theme }) {
                 {timezones
                   ? timezones.map((timezone, index) => {
                       if (index === 0) {
-                        return timezone
+                        return timezone;
                       } else {
-                        return ", " + timezone
+                        return ", " + timezone;
                       }
                     })
                   : "/"}
@@ -98,7 +98,7 @@ function DisplaySingleCountry({ data, theme }) {
                 <span>Border Countries: </span>
                 {borders
                   ? borders.map((border, index) => {
-                      const country = findCountryFromCode(border)
+                      const country = findCountryFromCode(border);
                       return (
                         <Link
                           to={`/country/${country}`}
@@ -107,7 +107,7 @@ function DisplaySingleCountry({ data, theme }) {
                         >
                           {country}
                         </Link>
-                      )
+                      );
                     })
                   : "/"}
               </div>
@@ -124,7 +124,7 @@ function DisplaySingleCountry({ data, theme }) {
         </div>
       </Wrapper>
     </div>
-  )
+  );
 }
 
 const Wrapper = styled.section`
@@ -243,6 +243,6 @@ const Wrapper = styled.section`
       }
     }
   }
-`
+`;
 
-export default DisplaySingleCountry
+export default DisplaySingleCountry;
