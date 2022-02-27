@@ -1,5 +1,5 @@
-import React from "react"
-import styled from "styled-components"
+import React from "react";
+import styled from "styled-components";
 
 function Footer() {
   return (
@@ -16,7 +16,7 @@ function Footer() {
         </a>
       </h4>
     </Wrapper>
-  )
+  );
 }
 
 const Wrapper = styled.footer`
@@ -27,6 +27,6 @@ const Wrapper = styled.footer`
     color: orange;
     border-bottom: 1px solid orange;
   }
-`
+`;
 
-export default Footer
+export default Footer;

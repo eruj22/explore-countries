@@ -1,14 +1,14 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
 import styled from "styled-components";
-import { CgArrowLongLeft } from "react-icons/cg";
-import { useHistory } from "react-router-dom";
+
 import image from "../assets/error-image.jpg";
+import GoBackButton from "./GoBackButton";
 
 function DisplaySingleCountry({ data, theme }) {
   const { name } = useParams();
-  let history = useHistory();
-  const country = data.filter((item) => item.name === name);
+
+  const country = data.find((item) => item.name === name);
   const {
     flag,
     region,
@@ -21,20 +21,18 @@ function DisplaySingleCountry({ data, theme }) {
     topLevelDomain,
     currencies,
     timezones,
-  } = country[0];
+  } = country;
 
   const findCountryFromCode = (code) => {
     const country = data.filter((item) => item.alpha3Code === code);
-    return country[0].name;
+    return country.name;
   };
 
   return (
     <div className="container">
       <Wrapper>
-        <button onClick={() => history.goBack()} className="goBack">
-          <CgArrowLongLeft className="goBack__icon" />
-          Back
-        </button>
+        <GoBackButton />
+
         <div className="info">
           <img src={flag ? flag : image} className="info__image" alt={name} />
           <div className="info__text">
@@ -130,28 +128,6 @@ function DisplaySingleCountry({ data, theme }) {
 const Wrapper = styled.section`
   margin-top: 5rem;
   min-height: 70vh;
-
-  .goBack {
-    background: ${({ theme }) => theme.elements};
-    color: inherit;
-    display: flex;
-    font-size: 1rem;
-    align-items: center;
-    padding: 0.7rem 2.4rem;
-    border-radius: 0.4rem;
-    width: fit-content;
-    box-shadow: 0.3px 0.3px 2.2px rgba(0, 0, 0, 0.017),
-      0.7px 0.7px 5.3px rgba(0, 0, 0, 0.022),
-      1.4px 1.4px 10.1px rgba(0, 0, 0, 0.027),
-      2.6px 2.6px 17.9px rgba(0, 0, 0, 0.032),
-      5.2px 5.2px 32.8px rgba(0, 0, 0, 0.042),
-      14px 14px 77px rgba(0, 0, 0, 0.07);
-
-    &__icon {
-      font-weight: bold;
-      margin-right: 0.5rem;
-    }
-  }
 
   .info {
     margin-top: 4rem;

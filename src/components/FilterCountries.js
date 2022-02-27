@@ -1,7 +1,7 @@
-import React from "react"
-import styled from "styled-components"
-import { AiOutlineSearch } from "react-icons/ai"
-import { AiOutlineCaretDown } from "react-icons/ai"
+import React from "react";
+import styled from "styled-components";
+import { AiOutlineSearch } from "react-icons/ai";
+import { AiOutlineCaretDown } from "react-icons/ai";
 
 function FilterCountries({
   setSearchQuery,
@@ -10,6 +10,8 @@ function FilterCountries({
   setFilterCountries,
   theme,
 }) {
+  const options = ["All", "Africa", "Americas", "Asia", "Europe", "Oceania"];
+
   return (
     <div className="container">
       <Wrapper>
@@ -34,17 +36,18 @@ function FilterCountries({
             <option value="select" hidden>
               Filter by Region
             </option>
-            <option value="All">All</option>
-            <option value="Africa">Africa</option>
-            <option value="Americas">America</option>
-            <option value="Asia">Asia</option>
-            <option value="Europe">Europe</option>
-            <option value="Oceania">Oceania</option>
+            {options.map((item) => {
+              return (
+                <option key={item} value={item}>
+                  {item}
+                </option>
+              );
+            })}
           </select>
         </div>
       </Wrapper>
     </div>
-  )
+  );
 }
 
 const Wrapper = styled.section`
@@ -115,6 +118,6 @@ const Wrapper = styled.section`
       margin-top: 1rem;
     }
   }
-`
+`;
 
-export default FilterCountries
+export default FilterCountries;
