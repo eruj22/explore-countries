@@ -1,5 +1,7 @@
 # Explore countries
 
+![Posnetek zaslona 2021-11-06 212925](https://user-images.githubusercontent.com/80893722/140623840-bda75463-e8c5-4475-a70a-45d52670c372.png)
+
 <!-- TABLE OF CONTENTS -->
 <details open="open">
   <summary>Table of Contents</summary>
